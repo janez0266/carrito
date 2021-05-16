@@ -1,0 +1,294 @@
+* {
+	padding: 0;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	background: #000 url('img/fondo-carrito2.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.contenedor {
+	margin: auto;
+	width: 90%;	
+	display: flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+}
+
+header {
+	width: 100%;	
+    background: rgba(255,255,255,.2);   
+	display: flex;
+	align-items: flex-end;
+}
+header div img {
+    width: 140px;
+}
+header .menu a {
+	color: rgb(7, 6, 6);
+	text-decoration: none;
+	margin-right:40px;
+	font-size: 18px;
+    margin-left: 10px;
+}
+
+
+/****************     Lista de compras  Carrito   *********************************/
+.contenedor2 {
+      
+    background: rgba(34, 34, 61, 0.4);
+    display: flex;   
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 22px;    
+}
+.caja {
+    width: 200px; 
+    text-align: center;
+    background: white;
+    margin: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+}
+.caja p {
+    font-size: 15px;
+}
+.slideshow {
+    background: rgb(245, 127, 31);
+	padding: 20px;
+	width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+aside {
+    position: fixed;
+    top: 0px;
+    right: 0;
+    height: 150px;
+    overflow-y: hidden;
+	background: rgb(231, 224, 224, 0.7);
+	padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    width: 150px;
+}
+aside:hover {
+
+    height: auto;
+    background: white;
+    border: 1px solid black;
+}
+aside .imgCarrito img{
+	padding: 10px 0;
+    width: 60px;  
+}
+
+aside h2 {
+    border-radius: 25px;
+    background: #73AD21;
+    padding: 4px; 
+    margin-bottom: 4px;
+    margin-left: 2px;
+    font-size: 16px;   
+}
+aside h2:hover {
+    background: #1f3007;
+    color: blanchedalmond;
+}
+#counter {
+    border-radius: 25px;
+    border: white solid 1px;
+    background: rgb(245, 50, 50);
+    color: white;
+    position: fixed;
+    top: 30px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    margin: auto;
+    padding: 8px;
+}
+footer {
+	margin-top: 20px;
+	background: rgba(255,255,255,.2);
+	padding: 20px;
+	margin-bottom: 20px;
+	width: 100%;
+	color: #fff;
+	display: flex;
+	flex-direction:row;
+	flex-wrap:no-wrap;
+	justify-content:space-between;
+}
+
+
+/*****************************      sidepannel  Agregar nuevos articulos  *****************************************/
+.sidepanel  {
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    height: 1000px;
+    top: 0;
+    left: 0;
+    background: rgba(61, 59, 34, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s; 
+    display: flex;
+    justify-content: space-around;
+  }  
+  .sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidepanel a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+  }
+  
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(122, 7, 7);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color:#444;
+  }
+  .dragImg {
+    width: 800px; 
+    text-align: center;
+    background: white;
+    margin: 15px;
+    padding: 20px;
+    display: flex;
+    background: rgba(61, 59, 34, 0.9);
+    
+    justify-content: space-between;
+  }
+  #div1 {
+    width: 150px;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+  }
+  #drag {
+      width: 100px;
+      height: 60px;
+  }
+  /******************  Formulario  ********************/
+
+  .formulario {
+    
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    left: 30px;
+    margin: 150px 20px 0 20px;
+    width: 1000px;
+    height: 700px;
+    padding: 60px;
+    color: rgb(229, 255, 0);
+    display: flex;
+    flex-direction: column;   
+  }
+
+  
+  /* Full-width input fields */
+  input[type=text], input[type=number] {
+    width: 90%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+  }
+  
+  .btn:hover {
+    opacity: .5;
+  }
+  /*
+  focus {
+    background-color: #ddd;
+    outline: none;
+
+  }*/
+  
+  /* Set a style for the submit button */
+  .btn {
+    background-color: rgb(37, 182, 18);
+    color: #01232e;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 300px;
+    opacity: 0.9;  
+  }
+  
+
+@media (max-width: 650px){
+    .openbtn{
+        font-size: 13px;
+    }
+    header div img {
+        width: 80px;
+    }
+    aside h2 {
+        font-size: 10px;
+        padding: 3px;
+    }
+    #counter {   
+        top: 30px;
+        right: 24px;
+        width: 30px;
+        height: 30px;   
+        padding: 4px;
+    }
+    aside {
+        font-size: 8px;
+        width: auto;
+        height: 120px;
+    }
+    aside .imgCarrito img {
+        padding: 10px 0;
+        width: 51px;
+    }
+
+
+}
+@media (max-width: 500px){
+    .caja {      
+        height: 200px;
+        font-size: 10px;
+        color: black;        
+    }
+    .caja img {      
+        height: 70px;
+        width: 40px;        
+    }
+    .caja img .btnCar {
+        width: 60px;
+    }
+}

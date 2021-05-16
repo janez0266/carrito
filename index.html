@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+   <!-- <script src="javascrpt.js"></script> -->
+   <script src="stock.js"></script>
+    <title>Tienda de compras</title>
+</head>
+<body>
+    <div class="contenedor">
+        <header>
+            <div class="logo">
+                <img src="img/carrito-compras-icono.jpg">
+            </div>
+            <nav class="menu">                
+                <button class="openbtn" onclick="openNav()">Nuevo stock</button>                               
+                               
+            </nav>
+        </header>
+
+
+        <div class="contenedor2" id="article">
+        </div>
+
+        <script src="javascrpt.js"></script>
+
+        <aside>
+            <h3>Tu compra</h3>
+            <div class="imgCarrito">
+                 <img src="img/carro-mouse.jpeg" alt="">
+            </div>
+            <h2 onclick="verMonto()">Comprar</h2> 
+            <hr><br>
+            <div id="myNav">   
+                    <div id="muestraCarrito"></div>
+            </div>
+            <hr>
+            <p id="total"></p>
+            <h2 onclick="vaciar()">Vaciar</h2> 
+        </aside>
+
+        <div><h3 id="counter">0</h3>
+        </div>
+
+
+        <div id="mySidepanel" class="sidepanel">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
+
+            <form  class="formulario">
+                <h1>Nuevo Artículo</h1>
+                <label for="titulo">Titulo:</label>
+                <input type="text" id="titulo" name="titulo"  required><br><br>
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="especificaciones" name="descripcion"  required><br><br>
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" ><br><br>
+                <label for="imagen">Imagen</label>
+                <p id="imagen" name="imagen">   </p>
+                <div class="dragImg">
+                    <div id="div1" ></div>
+                    <br>
+                    <img id="drag" src="img-catalog/laptops.jpg" onclick="addImg('img-catalog/laptops.jpg')">
+                    <img id="drag" src="img-catalog/celulares.jpeg" onclick="addImg('img-catalog/celulares.jpeg')">
+                    <img id="drag" src="img-catalog/audifonos.jpg" onclick="addImg('img-catalog/audifonos.jpg')">
+                </div>
+                 
+                <input type="button" class="btn" onclick="agregar_articulo()" value="Agregar producto al catálogo"><br><br>
+            </form>
+
+            
+
+
+
+        </div>
+       
+        <footer>
+            <p>lenio Bootcamp 2021 - Julio Añez</p>
+        </footer>
+        
+    </div>
+    
+</body>
+</html>

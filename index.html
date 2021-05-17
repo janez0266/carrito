@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
    <!-- <script src="javascrpt.js"></script> -->
-   <script src="stock.js"></script>
+
     <title>Tienda de compras</title>
 </head>
 <body>
@@ -25,8 +25,6 @@
         <div class="contenedor2" id="article">
         </div>
 
-        <script src="javascrpt.js"></script>
-
         <aside>
             <h3>Tu compra</h3>
             <div class="imgCarrito">
@@ -37,9 +35,11 @@
             <div id="myNav">   
                     <div id="muestraCarrito"></div>
             </div>
-            <hr>
+            
             <p id="total"></p>
-            <h2 onclick="vaciar()">Vaciar</h2> 
+            <div id="btnVaciar">
+                
+            </div>
         </aside>
 
         <div><h3 id="counter">0</h3>
@@ -57,11 +57,11 @@
                 <input type="text" id="especificaciones" name="descripcion"  required><br><br>
                 <label for="precio">Precio:</label>
                 <input type="number" id="precio" name="precio" ><br><br>
-                <label for="imagen">Imagen</label>
+                <label for="imagen">Click en la Imagen para seleccionar:</label>
                 <p id="imagen" name="imagen">   </p>
                 <div class="dragImg">
                     <div id="div1" ></div>
-                    <br>
+                
                     <img id="drag" src="img-catalog/laptops.jpg" onclick="addImg('img-catalog/laptops.jpg')">
                     <img id="drag" src="img-catalog/celulares.jpeg" onclick="addImg('img-catalog/celulares.jpeg')">
                     <img id="drag" src="img-catalog/audifonos.jpg" onclick="addImg('img-catalog/audifonos.jpg')">
@@ -81,6 +81,7 @@
         </footer>
         
     </div>
-    
+
+    <script src="javascrpt.js"></script>
 </body>
 </html>

@@ -50,16 +50,26 @@ header .menu a {
 }
 .caja {
     width: 200px; 
+    height: 300px;
     text-align: center;
     background: white;
-    margin: 15px;
+    margin: 8px;
     padding: 20px;
     display: flex;
     flex-direction: column; 
     justify-content: space-between;
+    align-items: center;
 }
 .caja p {
     font-size: 15px;
+}    
+.caja img {
+    width: 80%;
+}
+.btnCar  {
+    width: 80%;
+
+
 }
 .slideshow {
     background: rgb(245, 127, 31);
@@ -181,25 +191,29 @@ footer {
     background-color:#444;
   }
   .dragImg {
-    width: 800px; 
+    width: auto; 
     text-align: center;
     background: white;
     margin: 15px;
     padding: 20px;
     display: flex;
+    flex-wrap: wrap;
+    
     background: rgba(61, 59, 34, 0.9);
     
-    justify-content: space-between;
+    
   }
   #div1 {
     width: 150px;
     height: 80px;
     padding: 10px;
     border: 1px solid #aaaaaa;
+    margin: 4px;
   }
   #drag {
       width: 100px;
       height: 60px;
+      margin: 5px;
   }
   /******************  Formulario  ********************/
 
@@ -208,9 +222,9 @@ footer {
     background: rgb(0, 0, 0); /* Fallback color */
     background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
     left: 30px;
-    margin: 150px 20px 0 20px;
-    width: 1000px;
-    height: 700px;
+    margin: 70px 20px 0 20px;
+    width: 100%;
+    height: auto;
     padding: 60px;
     color: rgb(229, 255, 0);
     display: flex;
@@ -229,12 +243,7 @@ footer {
   .btn:hover {
     opacity: .5;
   }
-  /*
-  focus {
-    background-color: #ddd;
-    outline: none;
 
-  }*/
   
   /* Set a style for the submit button */
   .btn {
@@ -260,8 +269,8 @@ footer {
         padding: 3px;
     }
     #counter {   
-        top: 30px;
-        right: 24px;
+        top: 25px;
+        right: 14px;
         width: 30px;
         height: 30px;   
         padding: 4px;
@@ -278,17 +287,32 @@ footer {
 
 
 }
-@media (max-width: 500px){
+@media (max-width: 600px){
     .caja {      
-        height: 200px;
+     
+        width: 90%;
+        height: auto;
         font-size: 10px;
-        color: black;        
+        color: black;   
+        display: flex;     
+        flex-direction: row;
     }
     .caja img {      
-        height: 70px;
-        width: 40px;        
+      
+        width: 60%;        
     }
-    .caja img .btnCar {
-        width: 60px;
+    .btnCar{
+        margin-top: 18px;
     }
+    .formulario {
+       margin: 20px;
+        padding: 10px;
+    }
+    input[type=text], input[type=number] {
+        width: 90%;
+        padding: 5px;
+        margin: 5px 0 5px 0;
+        border: none;
+      }
+
 }

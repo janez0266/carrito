@@ -122,6 +122,7 @@ function agregar_articulo() {
     document.getElementById("especificaciones").value = "";
     document.getElementById("precio").value = ""; 
     document.getElementById("imagen").textContent = "";
+    document.getElementById("div1").textContent = "";
 
 
 }
@@ -131,11 +132,13 @@ function mostrarArticulos() {
     var articleNew = articulos.map(function(bar){
         return ' \
             <div class="caja">  \
-                <img src="'+bar.imagen+'" style="width: 100%">  \
-                <h3 id="tituloL">'+bar.titulo+'</h3> \
-                <p id="especificacionesL"> '+bar.especificaciones+'</p> \
-                <p>Solo por: $<span id="precioL">'+bar.precio+'</span></p> \
-                <img class="btnCar" src="img/add-to-cart-1747164_960_720.png" style="width: 80%" onclick="carrito('+bar.id+')"> \
+                <img src="'+bar.imagen+'" >  \
+                <div class="arText">        \
+                    <h3 id="tituloL">'+bar.titulo+'</h3> \
+                    <p id="especificacionesL"> '+bar.especificaciones+'</p> \
+                    <p>Solo por: $<span id="precioL">'+bar.precio+'</span></p> \
+                <img class="btnCar" src="img/add-to-cart-1747164_960_720.png" onclick="carrito('+bar.id+')"> \
+                </div>      \
             </div> '
         })
         document.getElementById("article").innerHTML = articleNew;      
@@ -147,7 +150,7 @@ var articuloCarrito = []; //arreglo del carrito
 
 function carrito(idx) {
     
-    if (Number(articuloCarrito.length) == 6){
+    if (articuloCarrito.length === 6){
         window.alert("El máximo de productos que se pueden comprar es 6...")
     }else {
  
@@ -170,11 +173,14 @@ function carrito(idx) {
         var montoTotal = articuloCarrito.map(function(bar){
         return monto = monto + Number(bar.precio);
         })
+        //var montoTotal = articuloCarrito.map((bar) => Number(bar.precio));  //calcula el subtotal a medida que se agregan articulos al carrito
         
         document.getElementById("muestraCarrito").innerHTML = articleCarrito;  // muestra el listado del contenido del carrito
         document.getElementById("counter").innerHTML = articleCarrito.length;   // muestra el contador del carrito
         document.getElementById("total").innerHTML = "<b style='color: Red;'>Total: " + monto + "</b><br>";     //muestra el monto total
-        console.log("articulos del carrito: " + articuloCarrito.length)        
+        document.getElementById("btnVaciar").innerHTML = '<h2 onclick="vaciar()">Vaciar</h2> ';
+        console.log("articulos del carrito: " + articuloCarrito.length)   
+
     }
 }
 
@@ -186,9 +192,16 @@ function verMonto() {
     var articleCarrito = articuloCarrito.map(function(bar){
         return monto = monto + Number(bar.precio);      
       })
-      window.alert("Total a cancelar: $" + monto)
-      vaciar();
+    //var articleCarrito = articuloCarrito.map((bar) => monto + Number(bar.precio));
+    if (monto == 0){
+        window.alert("No tiene ningun articulo en el carrito...");
+    } else {
+    window.alert("Total a cancelar: $" + monto)
+    vaciar();
+    }
 }
+
+
 
 // vaciar el carrito
 function vaciar() {
@@ -198,6 +211,7 @@ function vaciar() {
     document.getElementById("muestraCarrito").innerHTML = ""; //limpia el listado
     document.getElementById("total").innerHTML = "";     //limpia el monto total
     document.getElementById("counter").innerHTML = articuloCarrito.length;
+    document.getElementById("btnVaciar").innerHTML = '';
    
 }
 //************** agregar imagen**************+ */
@@ -207,3 +221,11 @@ function addImg(text) {
     document.getElementById("imagen").innerHTML = text;
 }
 
+//*************   agregar articulos al stock  *****************************+ */
+function openNav() {
+    document.getElementById("mySidepanel").style.width = "100%";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidepanel").style.width = "0";
+  }

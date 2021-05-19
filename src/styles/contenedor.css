@@ -1,0 +1,65 @@
+.contenedor {
+      
+    /*background: rgba(34, 34, 61, 0.4);*/
+    display: flex;   
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 160px;    
+}
+.caja {
+    width: 200px; 
+    height: 300px;
+    text-align: center;
+    box-shadow: 0 15px 8px 0 rgba(0, 0, 0, 0.2), 0 15px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color:var(--color-fondo);
+    margin: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: center;
+}
+.caja p {
+    font-size: 15px;
+    margin: 5px;
+}    
+.caja img {
+    width: 80%;
+}
+.btnCar  {
+    width: 80%;
+    cursor: pointer;
+    margin-top: 5px;
+}
+.btnCar:hover {
+    opacity: 0.5;
+}
+@media (max-width: 650px){
+    .contenedor {
+        margin-top: 92px;
+    }
+    
+ 
+   
+
+}
+@media (max-width: 500px){
+    .caja {      
+     
+        width: 99%;
+        height: auto;
+        font-size: 10px;
+        color: var(--color-fuente);   
+        display: flex;     
+        flex-direction: row;
+        
+    }
+   
+    .caja img {      
+      
+        width: 60%;        
+    }
+   
+  
+
+}

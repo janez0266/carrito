@@ -1,0 +1,126 @@
+:root {
+    --color-fuente: #ffffff;
+    /*--color-fondo: #2b3942;*/
+    --color-fondo: rgba(37, 60, 78, 0.8);
+    --color-fondo-enc: #313dc5;
+    --color-border:  1px solid #637c8b;
+    --color-monto: #cbff00;
+    --background-img: url('/img/walpaper2.jpg');
+    --bck-button: rgb(3 47 111);
+
+}
+
+[tema="light"]{
+    --color-fuente: #000;
+   /* --color-fondo: rgb(255, 255, 255);*/
+    --color-fondo: rgba(201, 212, 161, 0.8);
+    --color-fondo-enc: rgb(251, 255, 0);
+    --color-border:  1px solid #0a0a0a;
+    --color-monto: #cfd15c;
+    --bck-button: rgb(122, 7, 7);
+    --background-img: url('/img/walpaper1.jpg');
+   
+}
+
+
+
+* {
+	
+	margin: 0;
+
+	box-sizing: border-box;
+}
+
+body {
+    
+	font-family: 'Open Sans', sans-serif;
+	background-image: var(--background-img);
+
+	background-size: cover;
+	background-attachment: fixed;
+    color: var(--color-fuente);
+}
+
+
+.main {
+	margin: auto;
+	width: 90%;	
+	display: flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+    
+}
+
+header {
+	width: 100%;	
+    /*background: white;   */
+    background-color:var(--color-fondo-enc);
+	display: flex;
+	align-items: flex-end;
+    position: fixed;
+    top: 0px;
+    right: 0;
+    box-shadow: 0 15px 8px 0 rgba(0, 0, 0, 0.2), 0 15px 20px 0 rgba(0, 0, 0, 0.19);
+}
+header div img {
+    width: 140px;
+}
+header .menu a {
+	color: var(--color-fuente);
+	text-decoration: none;
+	margin-right:40px;
+	font-size: 18px;
+    margin-left: 10px;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: var(--bck-button);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color:#444;
+  }
+  footer {
+	margin-top: 20px;
+	background: rgba(255,255,255,.2);
+	padding: 20px;
+	margin-bottom: 20px;
+	width: 100%;
+	color: #fff;
+	display: flex;
+	flex-direction:row;
+	flex-wrap:no-wrap;
+	justify-content:space-between;
+}
+
+
+
+
+
+  /* ***********************************************************/
+@media (max-width: 650px){
+
+    .openbtn{
+        font-size: 13px;
+    }
+    header div img {
+        width: 80px;
+    }
+   
+
+}
+@media (max-width: 500px){
+   
+    .openbtn{
+        font-size: 10px;
+    }
+    header div img {
+        width: 60px;
+    }
+
+}

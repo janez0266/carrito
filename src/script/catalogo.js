@@ -9,91 +9,91 @@ let articulos = [
         titulo: "TV Sony 42",
         especificaciones: "42 pulgadas smart tv control remoto",
         precio: 500,
-        imagen: "/img-catalog/tv-sony.jpg"
+        imagen: "./img-catalog/tv-sony.jpg"
     },
     {
         id:2,
         titulo: "Teléfono Android X5",
         especificaciones: "3gb ram, 6.8'",
         precio: 250,
-        imagen: "/img-catalog/celulares.jpeg"
+        imagen: "./img-catalog/celulares.jpeg"
     },
     {
         id:3,
         titulo: "Laptop Gamer DELL",
         especificaciones: "14', 16gb ram, teclado iluminado",
         precio: 590,
-        imagen: "/img-catalog/laptops.jpg"
+        imagen: "./img-catalog/laptops.jpg"
     },
     {
         id:4,
         titulo: "Monitor Curvo SAMSUNG",
         especificaciones: "60'1080p, OLED",
         precio: 900,
-        imagen: "/img-catalog/monitor-large.jpg"
+        imagen: "./img-catalog/monitor-large.jpg"
     },
     {
         id:5,
         titulo: "Audifonos GAMERS",
         especificaciones: "Sonido Surround",
         precio: 145,
-        imagen: "/img-catalog/audifonos.jpg"
+        imagen: "./img-catalog/audifonos.jpg"
     },
     {
         id:6,
         titulo: "Disco Duro Externo",
         especificaciones: "SSD, Usb 3.1, 1TB",
         precio: 150,
-        imagen: "/img-catalog/disco-ext.jpg"
+        imagen: "./img-catalog/disco-ext.jpg"
     },
     {
         id:7,
         titulo: "Monitor 19",
         especificaciones: "Para PC, LED HDMI",
         precio: 150,
-        imagen: "/img-catalog/monitor.jpg"
+        imagen: "./img-catalog/monitor.jpg"
     },
     {
         id:8,
         titulo: "Pendrive 128GB",
         especificaciones: "Usb3 de alta velocidad",
         precio: 40,
-        imagen: "/img-catalog/pendrive.png"
+        imagen: "./img-catalog/pendrive.png"
     },
     {
         id:9,
         titulo: "Teclado Retroiluminado",
         especificaciones: "RGB, USB Gamer",
         precio: 120,
-        imagen: "/img-catalog/teclado.jpeg"
+        imagen: "./img-catalog/teclado.jpeg"
     },
     {
         id:10,
         titulo: "TV Sony 48",
         especificaciones: "48 pulgadas smart tv control remoto",
         precio: 590,
-        imagen: "/img-catalog/tv-sony.jpg"
+        imagen: "./img-catalog/tv-sony.jpg"
     },
     {
         id:11,
         titulo: "Teléfono Android X8",
         especificaciones: "4gb ram, 6.8'",
         precio: 280,
-        imagen: "/img-catalog/celulares.jpeg"
+        imagen: "./img-catalog/celulares.jpeg"
     },
     {
         id:12,
         titulo: "TV Sony 54",
         especificaciones: "54 pulgadas smart tv control remoto",
         precio: 700,
-        imagen: "/img-catalog/tv-sony.jpg"
+        imagen: "./img-catalog/tv-sony.jpg"
     },
     {
         id:13,
         titulo: "TV Sony 60",
         especificaciones: "60 pulgadas smart tv control remoto",
         precio: 900,
-        imagen: "/img-catalog/tv-sony.jpg"
+        imagen: "./img-catalog/tv-sony.jpg"
     }]
 
 /**
@@ -114,7 +114,7 @@ function mostrarArticulos() {
                     <h3 id="tituloL">'+bar.titulo+'</h3> \
                     <p id="especificacionesL"> '+bar.especificaciones+'</p> \
                     <p>Solo por: $<span id="precioL">'+bar.precio+'</span></p> \
-                <img class="btnCar" src="/img/add-to-cart-1747164_960_720.png" onclick="carrito('+bar.id+')"> \
+                <img class="btnCar" src="./img/add-to-cart-1747164_960_720.png" onclick="carrito('+bar.id+')"> \
                 </div>      \
             </div> '
         })

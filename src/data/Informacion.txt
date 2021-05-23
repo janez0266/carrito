@@ -1,0 +1,30 @@
+Lenio BootCamp 2021.
+
+Ejercicio de páctica con la elaboración de un carritode compras.
+
+1ra entrega:
+
+Se utilizaron los conocimientos apendidos durante el curso sobre HTML: Tags, Semántica, Formularios, Etc;
+CSS: estilos, flexbox, efectos varios; Javascript: arreglos, objetos, DOM HTML, Etc
+
+Para poder manejar un catálogo se utilizó un arreglo de objetos y algunas imágenes del directorio local para representarlos.
+Para todo el contenido, se usó solo una página HTML en combinacion con métodos que usan DOM para presentar más contenido HTML.
+Se utilizó mucha ayuda de los ejemplos de w3school.
+
+
+2da entrega: 
+
+Se implementó el uso de una ventana de información tipo POPUP
+Se utilizaron los conocimientos adquiridos en LocalStorage y APIs para descargar contenido JSON.
+se mejoró el estilo del sitio, agregando efectos de sombras en los bloques y se mejoró el método esponsive.
+Se implementó el uso de tema claro y oscuro, almacenando dicha preferencia en el LocalStorage.
+Se cambió el origen de datos del catalogo, de un almacenamiento local de la data a una data extraida de una API externa,
+ y la misma es almacenada en local mediante el uso de un documento JSON. Esto nos sirve para el caso que en algun momento 
+ el enlace no este disponible y el programa levanta el catalogo de la última actualización de descarga.
+ Se utilizó un arreglo temporal para manejar la cantidad de items disponibles por cada artículo.
+ - se muestra la descripción de cada articulo al pasar el raton sobre la imagen
+ - se uso un array de objetos para llevar el control de articulos disponibles
+ 
+ 
+
+

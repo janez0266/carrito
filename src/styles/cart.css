@@ -60,6 +60,9 @@ aside h3 {
 #muestraCarrito {
     text-align: center;
 }
+#precio {
+    color: red;
+}
 
 #counter {
     border-radius: 25px;
@@ -134,7 +137,7 @@ aside h3 {
     aside .imgCarrito img {
         padding: 0 0;
         width: 51px;
-        margin-right: 35px;
+        margin-right: 54px;
     }
 
 }

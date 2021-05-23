@@ -91,11 +91,12 @@ header .menu a {
 	padding: 20px;
 	margin-bottom: 20px;
 	width: 100%;
-	color: #fff;
+	color: var(--color-fuente);
 	display: flex;
 	flex-direction:row;
 	flex-wrap:no-wrap;
-	justify-content:space-between;
+	justify-content:center;
+    align-content: center;
 }
 
 

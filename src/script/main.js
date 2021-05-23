@@ -7,14 +7,7 @@ const url = "https://fakestoreapi.com/products";
 
 getAPI(url);      // => catalog.js
 
-//console.log(articulosCount);
-//logArticulos(articulos);
 
-// function logArticulos(arreglo) {
-
-//     console.log(articulos);
-//     console.log(articulos.length);
-// }
 
 /****************************************************************************************************
   * Método que muestra una ventana popup con mensajes definidos

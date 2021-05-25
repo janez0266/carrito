@@ -7,13 +7,9 @@
     top: 174px;
     left: 15%;
     overflow-y: scroll;
-     background-color:var(--color-fondo-enc);
-  /*  box-shadow: 0 15px 8px 0 rgba(0, 0, 0, 0.2), 0 15px 20px 0 rgba(0, 0, 0, 0.19);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    background-color:var(--color-fondo-enc);
     box-shadow: 0 12px 23px 0 rgb(0 0 0 / 60%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 	padding: 10px;
-   
-
 }
 
 .superior {
@@ -23,20 +19,12 @@
     position: fixed; 
     height: 130px;
     top: 45px;
-    left: 15%;
-   
-     background-color:var(--color-fondo-enc);
-  /*  box-shadow: 0 15px 8px 0 rgba(0, 0, 0, 0.2), 0 15px 20px 0 rgba(0, 0, 0, 0.19);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    left: 15%; 
+    background-color:var(--color-fondo-enc);
     box-shadow: 0 12px 23px 0 rgb(0 0 0 / 60%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 	padding: 10px;
     z-index: 2;
-   
-
 }
-
-
-
 
 .menuVenta {
     display: flex;
@@ -47,10 +35,7 @@
     padding: 10px;
 }
 
-
 .caja2 {
-
-
     width: 99%;
     height: auto;
     font-size: 10px;
@@ -95,20 +80,27 @@
     margin-right: 40px;
 }
 
+.cantDisp input[type=number]{
+    width: 35%;
+    text-align: center;   
+}
+.cantDisp input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 @media (max-width: 680px){
-   
     .superior {
-    
         height: 120px;
-      
-
         padding: 10px;
         z-index: 2;
-       
-    
+        width: 95%;
+        left: 0;
     }
     .comprar {
         top: 164px;
+        width: 95%;
+        left: 0;
     }
     .caja2 p {
         font-size: 14px;
@@ -125,16 +117,14 @@
     }
     .info {
         font-size: 12px;
-
     }
  
     .info p {
         padding: 0px;
         margin-right: 10px;
     }
-
-
 }
+
 @media (max-width: 500px){
     .caja2 p {
         font-size: 10px;

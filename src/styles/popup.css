@@ -2,7 +2,6 @@
 .popup {
     display: flex;
     position: fixed; 		
-   /* height: 100px;*/
     height: 0px;		
     width: 82%;			
     max-width: 1000px;	

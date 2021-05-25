@@ -2,7 +2,7 @@
 
 
 var articulos = [];  // Arreglo donde se almacena la data del catálogo del producto
-var stock = [];
+var stock = [];      // Arreglo donse se almacena el stock de cada artículo
 
 
 /***************************************************************************************************************
@@ -12,13 +12,13 @@ var stock = [];
   * @param {number|string|object|boolean|array} Parametros: url 
   * @returns {Array}  articulos(array) del catalogo
 ***************************************************************************************************************** */
-function getAPI(urlCall) {
+function getAPI(urlCall, filter) {
     fetch (urlCall)
     .then(response =>response.json())
     .then(data => {
         articulos = data;           //Llena el arreglo 'articulos' con los datos descargados
         llenarStockCount(data);     //Crea un arreglo para llevar el conteo de stock disponible
-        mostrarArticulos();        
+        mostrarArticulos(filter); 
     })
     .catch(error => console.log("error =>", error)); 
        
@@ -34,12 +34,26 @@ function getAPI(urlCall) {
   * @param {number|string|object|boolean|array} Parametros: Ninguno (toma los valores del arreglo global "articulos")
   * @returns {Array}  Listado de articulos en: <div class="contenedor" id="article"> ubicado en index.html
   * *****************************************************************************************************************/
-function mostrarArticulos() {    
-    //console.log(articulos);
-    //console.log(stock);
-    var articleNew = articulos.map(function(bar){
+function mostrarArticulos(filter) {    
+    //revision de la categoria seleccionada para filtrar el listado   
+    if(filter == "all"){
+        articulosF = articulos
+    }else {
+    let resultCat = articulos.filter(item => item.category == filter);
+        articulosF = resultCat;
+    }    
+    var articleNew = articulosF.map(function(bar){
         var cantidadDisponible = buscarStock(bar.id)     //Busca el stock diaponible de cada artículo
-        //console.log(cantidadDisponible);
+        var buttonAdd = "";
+        //verifica si existe stock del articulo
+         if(cantidadDisponible == 0) {
+            buttonAdd = '<div class="cajaBtn"> <p><b>AGOTADO...</b></P>  </div> ' ;
+        } else {
+            buttonAdd = '\
+            <div class="cajaBtn">\
+                <img class="btnCar" src="./img/add-to-cart-1747164_960_720.png" onclick="llenarCarrito('+bar.id+')">  \
+            </div> ' ;      
+        }
         return ' \
             <div class="caja">  \
                 <div class="cajaImg">     \
@@ -50,13 +64,10 @@ function mostrarArticulos() {
                     <p id="especificacionesL"> '+bar.category+'</p> \
                     <p> Disponibles: ' + cantidadDisponible +'</p> \
                     <p>Solo por: $<span id="precio">'+bar.price+'</span></p> \
-                </div>      \
-                <div class="cajaBtn">    \
-                    <img class="btnCar" src="./img/add-to-cart-1747164_960_720.png" onclick="carrito('+bar.id+')"> \
-                </div> \
-            </div> '
+                </div> '+buttonAdd+'     \
+            </div>'
         })
-        document.getElementById("article").innerHTML = articleNew;        
+        document.getElementById("article").innerHTML = articleNew;  
 }
 
 
@@ -93,3 +104,18 @@ function buscarStock(idx) {
     return result[0].disponible;
 }
 
+
+
+/*****************************************************************************************************************
+  * Método que selecciona un filtro por categoria para ser usado por el catálogo
+  * [Aplicación(es) que usa este método: index.html: <select id="filtroCat">
+  * @author Ing. Julio Añez
+  * @param {number|string|object|boolean|array} Parametros: Valor del "select"
+  * @returns {Array}  Variable global "datacat"
+  * *****************************************************************************************************************/
+let dataCat;
+function filtrarCategoria() {
+    dataCat = document.getElementById("filtroCat").value;
+    localStorage.setItem("filtroCategoria", dataCat)
+    mostrarArticulos(dataCat);
+}

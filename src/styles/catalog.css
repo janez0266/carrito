@@ -1,10 +1,8 @@
 .contenedor {
-      
-    /*background: rgba(34, 34, 61, 0.4);*/
     display: flex;   
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 160px;    
+    margin-top: 130px;    
 }
 .caja {
     width: 200px; 
@@ -20,9 +18,16 @@
     align-items: center;
 }
 
-.cajaImg img {
+.cajaImg {
     width: 140px;
     height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.cajaImg img {
+    width: 140px;
+    max-height: 160px;
 }
 .caja h3 {
     font-size: 12px;

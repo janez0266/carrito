@@ -4,7 +4,7 @@
 #switch {
     position: relative;
     display: inline-block;
-    width: 60px;
+    width: 62px;
     height: 34px;
     padding: 10px;
   }
@@ -64,26 +64,4 @@
   .slider.round:before {
     border-radius: 50%;
   }
-  @media (max-width: 650px){
-
-    #switch {
-        position: relative;
-        display: inline-block;
-        width: 30px;
-        height: 12px;
-        padding: 2px;
-      }
-      .slider:before {
-        
-        height: 12px;
-        width: 12px;
-        left: 1px;
-        bottom: 0px;
-   
-    }
-    .swText {
  
-        font-size: 10px;
-        
-      }
-  }

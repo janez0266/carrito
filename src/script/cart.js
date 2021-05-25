@@ -11,11 +11,9 @@ var articuloCarrito = []; //arreglo del carrito
   * @param {number|string|object|boolean|array} Parametros: ID del artículo
   * @returns {Array}  Muestra en pantalla un resumen de los articulos seleccionados
 ***************************************************************************************************************** */
-function carrito(idx) {
-
+function llenarCarrito(idx) {
     //verificar si el articulo ya ha sido seleccionado
-
-    let exist;
+    let exist = false;
     articuloCarrito.forEach( function(product) {
         if (product.id == idx) {
             exist = true;                   
@@ -31,11 +29,11 @@ function carrito(idx) {
         description: articulos[idx-1].description,
         category: articulos[idx - 1].category,
         price: articulos[idx - 1].price,
-        image: articulos[idx - 1].image
+        image: articulos[idx - 1].image,
+        cantidad: 1
     }
-    articuloCarrito.push(articuloCarritoTemp);     //agrega el articulo al array articuloCarrito
-    // mostrar los productos en el carrito
-    mostrarResumenCarrito();
+    articuloCarrito.push(articuloCarritoTemp);     //agrega el articulo al array articuloCarrito    
+    mostrarResumenCarrito();        // Actualiza los valores en pantalla
     }
 }
 
@@ -44,14 +42,13 @@ function carrito(idx) {
  
 /****************************************************************************************************
   * Método que muestran los detalles de cada articulo del carrito para proceder a la compra
-  * [Aplicación(es) que usa este método: cart.js: mostrarResumenCarrito()
+  * [Aplicación(es) que usa este método: cart.js: mostrarResumenCarrito(), agregarQuitar()
   * @author Ing. Julio Añez
   * @param {number|string|object|boolean|array} Parametros: Texto: ubicación de la imagen seleccionada
   * @returns {Array}  /ruta/imagen.seleccionada 
 */
 //*****************************  comprar  +++++++++++++++++++++++++++ */
-function detalles() {
-
+function mostrarDetallesCarrito() {
     var monto = montoAcumulado();
     let menuVenta = '\
         <div class = "franjaSuperior">   \
@@ -62,7 +59,7 @@ function detalles() {
           </div> \
           <div class="info"> \
             <div> <p>Cantidad de artículos: ' + articuloCarrito.length + '</p> </div>\
-            <div><p>Monto a pagar: $ <span id="precio">' + monto.toFixed(2) + '</span></p></div>   \
+            <div><p>Monto a pagar: $ <span id="precio"><b>' + monto.toFixed(2) + '</b></span></p></div>   \
           </div>    \
         </div> '
     document.getElementById("comprar").style.display = "block";
@@ -81,12 +78,18 @@ function detalles() {
                     <abbr title="' + bar.description + '"><img src="'+bar.image+'" ></abbr>  \
                 </div> \
                 <div>        \
-                        <h3>'+bar.title+'</h3> \
-                        <p> '+bar.category+'</p> \
-                        <p> Disponibles: ' + cantidadDisponible +'</p> \
-                        <p>Precio: $<span id="precio">'+bar.price+'</span></p> \
-                    </div>      \
-                    <div><button class="openbtn" onclick="quitarArtCart('+bar.id+')">Quitar Articulo</button> </div> \
+                    <h3>'+bar.title+'</h3> \
+                    <p> '+bar.category+'</p> \
+                    <p> Disponibles: ' + cantidadDisponible +'</p> \
+                    <p>Precio: $ <span id="precio"><b>'+bar.price+'</b></span></p> \
+                    <div class="cantDisp">\
+                        <input type="number"  id="nrItems'+bar.id+'" value='+bar.cantidad+' size="3" readonly>\
+                        <input type="button"  onclick="agregarQuitar(1, '+bar.id+')" value="+">\
+                        <input type="button"  onclick="agregarQuitar(2, '+bar.id+')" value="-">\
+                    </div>\
+                </div>      \
+                <div>\
+                    <button class="openbtn" onclick="quitarArtCart('+bar.id+')">Quitar Articulo</button> </div> \
                 </div> '       
         })
         var monto = montoAcumulado();
@@ -95,9 +98,8 @@ function detalles() {
 }
 
 
-
 /****************************************************************************************************
-  * Método que muestra un resumen de los artículos del carrito
+  * Método que muestra un resumen de los artículos del carrito al pasar el cursor sobre la imagen
   * [Aplicación(es) que usa este método: cart.js: carrito(), quitarArtCart()
   * @author Ing. Julio Añez
   * @param {number|string|object|boolean|array} Parametros: Ninguno
@@ -105,34 +107,24 @@ function detalles() {
 */
 //*****************************  comprar  +++++++++++++++++++++++++++ */
 function mostrarResumenCarrito() {
-    var articleCarrito = articuloCarrito.map(function(bar){  //arreglo temporal para montar los articulos
-        return ' \
-            <hr><br>  \
-             <p id="titulo"  class="font-size: 10px">'+bar.title+'</p> \
-            <p>Precio: $<span id="precio">'+bar.price+'</span></p> '            
-        })
-    var monto = montoAcumulado();
-    document.getElementById("muestraCarrito").innerHTML = articleCarrito;  // muestra el listado del contenido del carrito
-    document.getElementById("counter").innerHTML = articleCarrito.length;   // muestra el contador del carrito
-    document.getElementById("total").innerHTML = "<br><hr><br><b style='color: Red;'>Total: " + monto.toFixed(2) + "</b><br>";     //muestra el monto total
+    let monto = montoAcumulado().toFixed(2)
+    document.getElementById("counter").innerHTML = articuloCarrito.length;   // muestra el contador del carrito
+    document.getElementById("total").innerHTML = "<br><hr><br><b style='color: Red;'>Total: $ " + monto + "</b><br>";     //muestra el monto total
     document.getElementById("btnVaciar").innerHTML = '<h2 onclick="vaciar()">Vaciar</h2> ';
-    document.getElementById("btnComprar").innerHTML = '<h2 onclick="detalles()">Detalles</h2> ';
+    document.getElementById("btnComprar").innerHTML = '<h2 onclick="mostrarDetallesCarrito()">Detalles</h2> ';
 }
 
 
 /***************************************************************************************************************
   * Métodos que devuelve el monto acumulado de los articulos del carrito
-  * [Aplicación(es) que usa este método: cart.js: carrito(), comprar()
+  * [Aplicación(es) que usa este método: cart.js: mostrarDetalleCarrito(), mostrrResumenCarrito(), ejecutarVenta()
   * @author Ing. Julio Añez
   * @param {number|string|object|boolean|array} Parametros: Ninguno
   * @returns {Array}  Muestra en pantalla un resumen de los articulos seleccionados
 ***************************************************************************************************************** */
 function montoAcumulado(){
     let montoTmp = 0;
-    // var montoTotal = articuloCarrito.map(function(bar){
-    // return monto = monto + Number(bar.precio);
-    // })
-    var articleCarrito = articuloCarrito.map((bar) => montoTmp += Number(bar.price));
+    var articleCarrito = articuloCarrito.map((bar) => montoTmp += Number(bar.price * bar.cantidad));
     return montoTmp;
 }
 
@@ -140,7 +132,7 @@ function montoAcumulado(){
 
 /***************************************************************************************************************
   * Métodos que devuelve el monto acumulado de los articulos del carrito
-  * [Aplicación(es) que usa este método: cart.js: detalles()
+  * [Aplicación(es) que usa este método: cart.js: mostrarDetallesCarrito()
   * @author Ing. Julio Añez
   * @param {number|string|object|boolean|array} Parametros: idx (indice del articulo a quitar del carrito)
   * @returns {Array}  Muestra en pantalla un resumen de los articulos seleccionados
@@ -150,15 +142,14 @@ function quitarArtCart(idx) {
         return index.id == idx;
     });
     articuloCarrito.splice(indice,1);
-    //console.log(articuloCarrito);
-    detalles();
+    mostrarDetallesCarrito();
     mostrarResumenCarrito();
 }
 
 
 /****************************************************************************************************
   * Método que elimina todos los articulos seleccionados en el carrito
-  * [Aplicación(es) que usa este método: cart.js: carrito(), ejecutarVenta()
+  * [Aplicación(es) que usa este método: cart.js: mostrarDetalleCarrito(), mostrarResumenCarrito(), ejecutarVenta()
   * @author Ing. Julio Añez
   * @param {number|string|object|boolean|array} Parametros: ninguno
   * @returns {Array}  Listado vacio de articulos en: <aside> ubicado en index.html
@@ -167,34 +158,76 @@ function vaciar() {
     articuloCarrito = [];
     articleCarrito = [];
     document.getElementById("muestraCarrito").innerHTML = ""; //limpia el listado
-    document.getElementById("total").innerHTML = "";     //limpia el monto total
-    document.getElementById("counter").innerHTML = articuloCarrito.length;
-    document.getElementById("btnVaciar").innerHTML = '';
-    document.getElementById("btnComprar").innerHTML = '';
+    document.getElementById("total").innerHTML = "";     //limpia el monto total 
+    document.getElementById("counter").innerHTML = articuloCarrito.length;   // muestra el contador del carrito
+    document.getElementById("total").innerHTML = "";     //muestra el monto total
+    document.getElementById("btnVaciar").innerHTML = "";
+    document.getElementById("btnComprar").innerHTML = "";
     cerrarVentana();
-    //window.alert("El carrito fue vaciado con éxito...")
-    popup("El carrito esta vacio.....");
+    popup("El carrito fue vaciado....");
+
 }
 
 
 
-
+/****************************************************************************************************
+  * Método que cierra la ventana del carrito
+  * [Aplicación(es) que usa este método: cart.js: ejecutarVenta(), vaciar()
+  * @author Ing. Julio Añez
+  * @param {number|string|object|boolean|array} Parametros: ninguno
+  * @returns {Array}  
+*/
 function cerrarVentana(){
     document.getElementById("superior").style.display = "none";
     document.getElementById("comprar").style.display = "none";
 }
 
+
+/****************************************************************************************************
+  * Método que toma los articulos del carrito y efectúa la venta
+  * [Aplicación(es) que usa este método: cart.js: ejecutarVenta(), vaciar()
+  * @author Ing. Julio Añez
+  * @param {number|string|object|boolean|array} Parametros: ninguno
+  * @returns {Array}  
+*/
 function ejecutarVenta() {
     let montoFacturado = montoAcumulado();
     //buscar los articulos del catalogo y descontar la cantidad de articulos restantes
-    articuloCarrito.forEach(function(product) {        //recorrer cada articulo del carrito      
+    articuloCarrito.forEach(function(product) {        //recorrer cada articulo del carrito 
+        const idArt = product.id;
+        const elemento = "nrItems" + idArt; 
         let result = stock.filter(item => item.id == product.id);
-        result[0].disponible--;       
+        const nrItems = document.getElementById(elemento).value;
+        result[0].disponible -= nrItems ; 
     })
-    mostrarArticulos();
+    dataCat = document.getElementById("filtroCat").value;
+    mostrarArticulos(dataCat);                          // refresca la vista de los artículos del catálogo
     vaciar();
     cerrarVentana()
     popup("Operacion exitosa, su compra de $ "+ montoFacturado.toFixed(2)+  " se ha realizado...");
 }
 
 
+/****************************************************************************************************
+  * Método que aumenta o disminuye la cantidad a comprar de cada artículo del carrito
+  * [Aplicación(es) que usa este método: cart.js: mostrarDetalleCarrito()
+  * @author Ing. Julio Añez
+  * @param {number|string|object|boolean|array} Parametros: "operador": 1 si es suma, 2 si es resta; "idx": indice del artículo
+  * @returns {Array}  
+*/
+function agregarQuitar(operador,idx){
+    const elemento = "nrItems" + idx;       //crea el nombre "id" que sera usado en el "input" de cantidad
+    let indice = articuloCarrito.findIndex(indiceCarrito => indiceCarrito.id === idx);
+    let cantidadEnStock = stock[idx-1].disponible;
+    let cantidadAComprar = articuloCarrito[indice].cantidad
+   
+    if(operador == 1){
+        if(cantidadAComprar != cantidadEnStock) articuloCarrito[indice].cantidad += 1;
+    }else {
+        if (cantidadAComprar  > 1) articuloCarrito[indice].cantidad -= 1;
+    }
+    document.getElementById(elemento).value = articuloCarrito[indice].cantidad; 
+    mostrarDetallesCarrito();
+    mostrarResumenCarrito();
+
+}

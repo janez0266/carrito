@@ -21,8 +21,8 @@ document.querySelector('.menu-btn').addEventListener('click', () => {
   * Método que revisa el LocalStorage del navegador para cargar el ultimo tema seleccionado
   * [Aplicación(es) que usa este método: this
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: T
-  * @returns   
+  * @param {ninguno} Parametros: 
+  * @returns   Estilo del tema
 */
 function cargarTema() {
   if("tema" in localStorage){
@@ -41,7 +41,7 @@ function cargarTema() {
   * Método que cambia el tema al seleccionarlo en un Toggle Button. se guarda en el LocalStorage
   * [Aplicación(es) que usa este método: 
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: Evento del Toggle Button
+  * @param {boolean} Parametros: Evento del Toggle Button
   * @returns   Activar tema seleccionado
 */
 function cambiaTema(ev){
@@ -60,17 +60,17 @@ function cambiaTema(ev){
 
 
 /****************************************************************************************************
-  * Método que carga un texto de un archivo JSON ubicado en src/data/ 
+  * Método que carga un texto de un archivo JSON y lo muestra en el logo  
   * [Aplicación(es) que usa este método: 
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: URL del archivo a leer
+  * @param {string} Parametros: URL del archivo a leer
   * @returns   Texto que se muestra al pasar el cursor sobre el logo
 */
 function informacion(urlTexto) {
   fetch (urlTexto)
     .then(response =>response.json())
     .then(dataText => {
-        const myleni = dataText[0].title;           //Llena el arreglo 'articulos' con los datos descargados
+        const myleni = dataText[0].title;           
         document.getElementById("textoLeni").title = myleni; 
     })
     .catch(error => console.log("error =>", error));
@@ -83,7 +83,7 @@ function informacion(urlTexto) {
   * Método que muestra una ventana popup con mensajes definidos
   * [Aplicación(es) que usa este método: index.html, cart.js, newStock,js, 
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: Texto: Mensaje a mostrar en el popup
+  * @param {string} Parametros: Texto: Mensaje a mostrar en el popup
   * @returns   Texto con mensaje en: <div class="popup" id="popup"> ubicado en index.html
 */
 function popup(text) {

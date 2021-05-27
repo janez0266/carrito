@@ -6,8 +6,8 @@
   * ingresar nuevos artículos al catálogo...
   * [Aplicación(es) que usa este método: index.html: <button class="openbtn"> y  <div id="newStock">
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: 
-  * @returns {Array}  
+  * @param {Ninguno} Parametros: 
+  * @returns {vacio}  
 ***************************************************************************************************************** */
 function openNav() {
   document.getElementById("newStock").style.width = "80%";
@@ -23,7 +23,7 @@ function closeNav() {
   * Métodos que toma los valores del formulario y los guarda en el arreglo del catálogo
   * [Aplicación(es) que usa este método: index.html => <form>
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: 
+  * @param {number|string} Parametros: 
   * @returns {Array}  
 ***************************************************************************************************************** */
 function agregar_articulo() {
@@ -71,8 +71,8 @@ function agregar_articulo() {
 * Método que selecciona una imagen para representar al nuevo articulo del catálogo
 * [Aplicación(es) que usa este método: index.html => <div class="selectImg">
 * @author Ing. Julio Añez
-* @param {number|string|object|boolean|array} Parametros: Texto: Ruta de la imagen seleccionada
-* @returns {Array}   
+* @param {string} Parametros: Texto: Ruta de la imagen seleccionada
+* @returns {string}   
 ******************************************************************************************************/
 
 function addImg(text) {  

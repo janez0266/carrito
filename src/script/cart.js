@@ -5,10 +5,10 @@ var articuloCarrito = []; //arreglo del carrito
 
 
 /***************************************************************************************************************
-  * Métodos que agrega en un arreglo(carrito) los artículos que se van seleccionando del catálogo
+  * Métodos que agrega en un arreglo(carrito) cada artículos que se van seleccionando del catálogo
   * [Aplicación(es) que usa este método: catalog.js
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: ID del artículo
+  * @param {number} Parametros: ID del artículo, Arreglo global de objetos del carrito
   * @returns {Array}  Muestra en pantalla un resumen de los articulos seleccionados
 ***************************************************************************************************************** */
 function llenarCarrito(idx) {
@@ -44,8 +44,8 @@ function llenarCarrito(idx) {
   * Método que muestran los detalles de cada articulo del carrito para proceder a la compra
   * [Aplicación(es) que usa este método: cart.js: mostrarResumenCarrito(), agregarQuitar()
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: Texto: ubicación de la imagen seleccionada
-  * @returns {Array}  /ruta/imagen.seleccionada 
+  * @param {ninguno} Parametros: Arreglo global de objetos del carrito
+  * @returns {Array}  muestra o refresca la lista detallada de los articulos del carrito 
 */
 //*****************************  comprar  +++++++++++++++++++++++++++ */
 function mostrarDetallesCarrito() {
@@ -102,8 +102,8 @@ function mostrarDetallesCarrito() {
   * Método que muestra un resumen de los artículos del carrito al pasar el cursor sobre la imagen
   * [Aplicación(es) que usa este método: cart.js: carrito(), quitarArtCart()
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: Ninguno
-  * @returns {Array}  Imprime resumen del listado actual 
+  * @param {Array} Parametros: Arreglo global de objetos del carrito
+  * @returns {Array}  Imprime resumen del listado actual del carrito 
 */
 //*****************************  comprar  +++++++++++++++++++++++++++ */
 function mostrarResumenCarrito() {
@@ -119,8 +119,8 @@ function mostrarResumenCarrito() {
   * Métodos que devuelve el monto acumulado de los articulos del carrito
   * [Aplicación(es) que usa este método: cart.js: mostrarDetalleCarrito(), mostrrResumenCarrito(), ejecutarVenta()
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: Ninguno
-  * @returns {Array}  Muestra en pantalla un resumen de los articulos seleccionados
+  * @param {Ninguno} Parametros: Ninguno
+  * @returns {Number}  Regrea el monto acumulado de los artículos que se van agregando al carrito
 ***************************************************************************************************************** */
 function montoAcumulado(){
     let montoTmp = 0;
@@ -131,11 +131,11 @@ function montoAcumulado(){
 
 
 /***************************************************************************************************************
-  * Métodos que devuelve el monto acumulado de los articulos del carrito
+  * Métodos que Elimina un artículodel carrito
   * [Aplicación(es) que usa este método: cart.js: mostrarDetallesCarrito()
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: idx (indice del articulo a quitar del carrito)
-  * @returns {Array}  Muestra en pantalla un resumen de los articulos seleccionados
+  * @param {number} Parametros: idx (indice del articulo a quitar del carrito)
+  * @returns {Array}  Elimina un artículodel carrito y refresca los listados
 ***************************************************************************************************************** */
 function quitarArtCart(idx) {
      let indice = articuloCarrito.findIndex(function(index){
@@ -148,10 +148,10 @@ function quitarArtCart(idx) {
 
 
 /****************************************************************************************************
-  * Método que elimina todos los articulos seleccionados en el carrito
+  * Método que elimina todos los articulos del carrito
   * [Aplicación(es) que usa este método: cart.js: mostrarDetalleCarrito(), mostrarResumenCarrito(), ejecutarVenta()
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: ninguno
+  * @param {Ninguno} Parametros: ninguno
   * @returns {Array}  Listado vacio de articulos en: <aside> ubicado en index.html
 */
 function vaciar() {
@@ -174,8 +174,8 @@ function vaciar() {
   * Método que cierra la ventana del carrito
   * [Aplicación(es) que usa este método: cart.js: ejecutarVenta(), vaciar()
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: ninguno
-  * @returns {Array}  
+  * @param {Ninguno} Parametros: ninguno
+  * @returns {ninguno}  
 */
 function cerrarVentana(){
     document.getElementById("superior").style.display = "none";
@@ -187,7 +187,7 @@ function cerrarVentana(){
   * Método que toma los articulos del carrito y efectúa la venta
   * [Aplicación(es) que usa este método: cart.js: ejecutarVenta(), vaciar()
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: ninguno
+  * @param {Ninguno} Parametros: ninguno
   * @returns {Array}  
 */
 function ejecutarVenta() {
@@ -212,7 +212,7 @@ function ejecutarVenta() {
   * Método que aumenta o disminuye la cantidad a comprar de cada artículo del carrito
   * [Aplicación(es) que usa este método: cart.js: mostrarDetalleCarrito()
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: "operador": 1 si es suma, 2 si es resta; "idx": indice del artículo
+  * @param {number|number} Parametros: "operador": '1' si es suma, '2' si es resta; "idx": indice del artículo
   * @returns {Array}  
 */
 function agregarQuitar(operador,idx){

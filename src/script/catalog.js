@@ -9,8 +9,8 @@ var stock = [];      // Arreglo donse se almacena el stock de cada artículo
   * Método que descarga los datos de una API externa
   * [Aplicación(es) que usa este método: main.js
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: url 
-  * @returns {Array}  articulos(array) del catalogo
+  * @param {string|string} Parametros: url, categoria para filtrar el catálogo 
+  * @returns {Array}  
 ***************************************************************************************************************** */
 function getAPI(urlCall, filter) {
     fetch (urlCall)
@@ -31,7 +31,7 @@ function getAPI(urlCall, filter) {
   * Método que lee los datos del arreglo (articulos) del catálogo de productos y los muestra en la pagina ppal.
   * [Aplicación(es) que usa este método: NewStock.js, catalog.js, cart.js
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: Ninguno (toma los valores del arreglo global "articulos")
+  * @param {string} Parametros: Categoria de los artículosa filtrar
   * @returns {Array}  Listado de articulos en: <div class="contenedor" id="article"> ubicado en index.html
   * *****************************************************************************************************************/
 function mostrarArticulos(filter) {    
@@ -42,7 +42,7 @@ function mostrarArticulos(filter) {
     let resultCat = articulos.filter(item => item.category == filter);
         articulosF = resultCat;
     }    
-    var articleNew = articulosF.map(function(bar){
+    var articleNew = articulosF.map((bar) => {
         var cantidadDisponible = buscarStock(bar.id)     //Busca el stock diaponible de cada artículo
         var buttonAdd = "";
         //verifica si existe stock del articulo
@@ -72,10 +72,10 @@ function mostrarArticulos(filter) {
 
 
 /*****************************************************************************************************************
-  * Método que crea un arreglo para llevar el stock de cada artículo disponivle
+  * Método que crea un arreglo para llevar el stock de cada artículo disponible
   * [Aplicación(es) que usa este método: catalog.js: getAPI()
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: recibe el arreglo de artículos
+  * @param {Array Object} Parametros: recibe el arreglo de los artículos
   * @returns {Array}  Crea un arreglo de inicialización de stock para cada artículo
   * *****************************************************************************************************************/
 function llenarStockCount(articulosStock) {
@@ -93,11 +93,11 @@ function llenarStockCount(articulosStock) {
 
 
 /*****************************************************************************************************************
-  * Método que lee los datos del arreglo (articulos) del catálogo de productos y los muestra en la pagina ppal.
+  * Método que busca la cantidad disponible de un articulo
   * [Aplicación(es) que usa este método: catalog.js: mostrarArticulos(), cart.js: detalles()
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: Indice del articulo (id:)
-  * @returns {Array}  Cantidad de artículos disponibles
+  * @param {number} Parametros: Indice del articulo (id:)
+  * @returns {Number}  Cantidad de artículos disponibles
   * *****************************************************************************************************************/
 function buscarStock(idx) {
     let result = stock.filter(item => item.id == idx);
@@ -107,10 +107,10 @@ function buscarStock(idx) {
 
 
 /*****************************************************************************************************************
-  * Método que selecciona un filtro por categoria para ser usado por el catálogo
+  * Método que filtra por categoria los articulos del catálogo
   * [Aplicación(es) que usa este método: index.html: <select id="filtroCat">
   * @author Ing. Julio Añez
-  * @param {number|string|object|boolean|array} Parametros: Valor del "select"
+  * @param {string} Parametros: Valor del "select"  de la categoria a filtrar
   * @returns {Array}  Variable global "datacat"
   * *****************************************************************************************************************/
 let dataCat;
